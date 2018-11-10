@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">HANUMAN</string>
+    <string name="tw_splash">HANUMAN</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="check_remember">Remember me</string>
+    <string name="log_counter">No of attempts remaining:  </string>
+    <string name="title_activity_anamenu">Anamenu</string>
+
+
+    <string name="petName">give a name</string>
+    <string name="vaccine">AŞI</string>
+    <string name="disease">HASTALIK</string>
+    <string name="threatment">TEDAVİ</string>
+    <string name="appointment">RANDEVU</string>
+    <string name="genel">GÜNCEL İŞLEMLER</string>
+    <string name="BirthDate">Doğum Tarihi</string>
+    <string name="PetGender">Cinsiyet</string>
+    <string name="PetGenus">Cins</string>
+
+</resources>

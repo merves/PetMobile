@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightpink"
+    tools:context="com.example.trk.petmobile.PetInfoActivity">
+
+
+
+        <!-- image view+button ve textler için -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <!-- image view + button -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageToUpload"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+
+            <Button
+                android:id="@+id/btnUploadImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Image"
+                tools:layout_editor_absoluteX="-4dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+        </LinearLayout> <!-- image view + button -->
+
+        <!-- texts -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etUploadName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/petName" />
+
+            <EditText
+                android:id="@+id/etBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/BirthDate" />
+
+            <EditText
+                android:id="@+id/etGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/PetGender" />
+
+            <EditText
+                android:id="@+id/etGenus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/PetGenus" />
+
+        </LinearLayout> <!-- text -->
+
+    </LinearLayout> <!-- image view+button ve textler için -->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/tvGenel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeMaxTextSize="40dp"
+            android:gravity="center"
+            android:text="@string/genel"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="23dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <Button
+            android:id="@+id/btnAsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vaccine"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="38dp" />
+
+        <Button
+            android:id="@+id/btnHastalik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disease"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="93dp" />
+
+        <Button
+            android:id="@+id/btnTedavi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/threatment"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="148dp" />
+
+        <Button
+            android:id="@+id/btnRandevu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="204dp" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
