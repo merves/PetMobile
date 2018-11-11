@@ -13,82 +13,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026">
-
-        <!-- image view + button -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageToUpload"
-                android:layout_width="150dp"
-                android:layout_height="150dp" />
-
-            <Button
-                android:id="@+id/btnUploadImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Resim yükle"
-                tools:layout_editor_absoluteX="-4dp"
-                tools:layout_editor_absoluteY="162dp" />
-
-        </LinearLayout> <!-- image view + button -->
-
-        <!-- texts -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/etUploadName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/petName" />
-
-            <EditText
-                android:id="@+id/etBirthdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/BirthDate" />
-
-            <EditText
-                android:id="@+id/etGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/PetGender" />
-
-            <EditText
-                android:id="@+id/etGenus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/PetGenus" />
-
-        </LinearLayout> <!-- text -->
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
+        app:layout_constraintVertical_weight="0.5"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -123,7 +48,8 @@
 
             <Button
                 android:id="@+id/btnAsi"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.35"
                 android:layout_height="wrap_content"
                 android:text="@string/vaccine"
                 tools:layout_editor_absoluteX="16dp"
@@ -131,14 +57,16 @@
 
             <CheckBox
                 android:id="@+id/cbic"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="İç" />
 
             <CheckBox
                 android:id="@+id/cbdıs"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:text="Dış" />
 
@@ -151,7 +79,8 @@
 
             <Button
                 android:id="@+id/btnHastalik"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.35"
                 android:layout_height="wrap_content"
                 android:text="@string/disease"
                 tools:layout_editor_absoluteX="16dp"
@@ -159,16 +88,16 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="hastalık1" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="hastalık2" />
 
         </LinearLayout>
@@ -180,7 +109,8 @@
 
             <Button
                 android:id="@+id/btnTedavi"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.35"
                 android:layout_height="wrap_content"
                 android:text="@string/threatment"
                 tools:layout_editor_absoluteX="16dp"
@@ -189,17 +119,17 @@
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:progressDrawable="@android:color/holo_green_dark" />
 
             <ProgressBar
                 android:id="@+id/progressBar2"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:progressDrawable="@android:color/holo_blue_dark" />
 
         </LinearLayout>
@@ -211,7 +141,8 @@
 
             <Button
                 android:id="@+id/btnRandevu"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.35"
                 android:layout_height="wrap_content"
                 android:text="@string/appointment"
                 tools:layout_editor_absoluteX="16dp"
@@ -219,18 +150,18 @@
 
             <EditText
                 android:id="@+id/editText4"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="12.12.2018"
                 android:ems="10"
                 android:inputType="date" />
 
             <EditText
                 android:id="@+id/editText5"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="14:30"
                 android:ems="10"
                 android:inputType="time" />
@@ -254,6 +185,112 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        app:layout_constraintVertical_weight="0.5"
+        android:layout_height="212dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032">
+
+        <!-- image view + button -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageToUpload"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/btnUploadImage"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignTop="@+id/btnUpCamera"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/btnUpCamera"
+                    android:background="@drawable/ic_menu_camera" />
+
+                <Button
+                    android:id="@+id/btnUpCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/ic_menu_gallery" />
+            </LinearLayout>
+
+        </LinearLayout> <!-- image view + button -->
+
+        <!-- texts -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etUploadName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:hint="@string/petName" />
+
+            <EditText
+                android:id="@+id/etBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:hint="@string/BirthDate" />
+
+            <EditText
+                android:id="@+id/etGender"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:hint="@string/PetGender" />
+
+            <EditText
+                android:id="@+id/etGenus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:hint="@string/PetGenus" />
+
+        </LinearLayout> <!-- text -->
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
