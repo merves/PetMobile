@@ -8,25 +8,25 @@
     android:background="@color/lightpink"
     tools:context="com.example.trk.petmobile.PetInfoActivity">
 
+    <!-- aşı hastalık randevu -->
 
 
-        <!-- image view+button ve textler için -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintVertical_bias="0.026">
 
         <!-- image view + button -->
         <LinearLayout
@@ -47,7 +47,7 @@
                 android:id="@+id/btnUploadImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Upload Image"
+                android:text="Resim yükle"
                 tools:layout_editor_absoluteX="-4dp"
                 tools:layout_editor_absoluteY="162dp" />
 
@@ -85,23 +85,24 @@
 
         </LinearLayout> <!-- text -->
 
-    </LinearLayout> <!-- image view+button ve textler için -->
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintVertical_bias="0.861">
 
         <TextView
             android:id="@+id/tvGenel"
@@ -115,51 +116,129 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
-        <Button
-            android:id="@+id/btnAsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vaccine"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="38dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnHastalik"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/disease"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="93dp" />
+            <Button
+                android:id="@+id/btnAsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vaccine"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="38dp" />
 
-        <Button
-            android:id="@+id/btnTedavi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/threatment"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="148dp" />
+            <CheckBox
+                android:id="@+id/cbic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="İç" />
 
-        <Button
-            android:id="@+id/btnRandevu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/appointment"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="204dp" />
+            <CheckBox
+                android:id="@+id/cbdıs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dış" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnHastalik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disease"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="hastalık1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="hastalık2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnTedavi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/threatment"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="163dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:progressDrawable="@android:color/holo_green_dark" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:progressDrawable="@android:color/holo_blue_dark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRandevu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/appointment"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="204dp" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12.12.2018"
+                android:ems="10"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="14:30"
+                android:ems="10"
+                android:inputType="time" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </android.support.constraint.ConstraintLayout>

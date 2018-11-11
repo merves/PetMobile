@@ -21,6 +21,7 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
     private EditText Password;
     private TextView Info;
     private Button Login;
+    private Button Register;
     private int counter = 5;
     private CheckBox rem_userpass;
 
@@ -59,6 +60,7 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
            // Password = (EditText)findViewById(R.id.etPassword);
             Info = (TextView)findViewById(R.id.tvInfo);
             Login = (Button)findViewById(R.id.btnLogin);
+            Register = (Button) findViewById(R.id.btnregister) ;
 
             Info.setText("No of attempts remaining: 5");
 
@@ -68,6 +70,13 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
                     validate(Name.getText().toString(), Password.getText().toString());
                 }
             });
+            Register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intentLoadNewActivity = new Intent(SignActivity.this, RegisterActivity.class);
+                    startActivity(intentLoadNewActivity);}
+            });
+
         }
 
     private void validate(String userName, String userPassword){
