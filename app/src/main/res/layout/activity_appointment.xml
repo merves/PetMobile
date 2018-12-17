@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +8,46 @@
     android:background="@color/lightpink"
     tools:context="com.example.trk.petmobile.AppointmentActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="randevu günleri takibi \n yeni istekte bulunma "/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="randevu tarihi"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_above="@+id/editText2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="33dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="yeni randevu gün / saat"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_above="@+id/button"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Randevu Talep"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="127dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Randevu1"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

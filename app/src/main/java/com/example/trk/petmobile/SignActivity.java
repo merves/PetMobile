@@ -81,7 +81,7 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
 
     private void validate(String userName, String userPassword){
         if((userName.equals("admin")) && (userPassword.equals("1234"))){
-            Intent intent = new Intent(SignActivity.this, AnamenuActivity.class);
+            Intent intent = new Intent(SignActivity.this, MenuActivity.class);
             startActivity(intent);
         }else{
             counter--;

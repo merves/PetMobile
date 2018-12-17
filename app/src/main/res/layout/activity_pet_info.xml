@@ -222,17 +222,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
                 <Button
                     android:id="@+id/btnUploadImage"
                     android:layout_width="50dp"
@@ -241,16 +230,9 @@
                     android:layout_alignTop="@+id/btnUpCamera"
                     android:layout_marginLeft="20dp"
                     android:layout_toEndOf="@+id/btnUpCamera"
-                    android:background="@drawable/ic_menu_camera" />
+                    android:background="@drawable/ic_add_a_photo_black_24dp" />
 
-                <Button
-                    android:id="@+id/btnUpCamera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/ic_menu_gallery" />
-            </LinearLayout>
+
 
         </LinearLayout> <!-- image view + button -->
 

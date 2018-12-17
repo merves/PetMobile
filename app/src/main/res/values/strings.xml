@@ -6,7 +6,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Ayarlar</string>
     <string name="check_remember">Beni hatırla</string>
     <string name="log_counter">Kalan deneme sayısı:  </string>
     <string name="title_activity_anamenu">Ana menü</string>
@@ -21,5 +20,8 @@
     <string name="BirthDate">Doğum Tarihi</string>
     <string name="PetGender">Cinsiyet</string>
     <string name="PetGenus">Cins</string>
+    <string name="title_activity_menu">MenuActivity</string>
+
+    <string name="action_settings">Ayarlar</string>
 
 </resources>

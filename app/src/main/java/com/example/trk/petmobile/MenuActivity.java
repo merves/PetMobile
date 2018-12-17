@@ -15,15 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
-public class AnamenuActivity extends AppCompatActivity
+public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageButton petimage_btn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anamenu);
+        setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,12 +44,11 @@ public class AnamenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         petimage_btn = (ImageButton) findViewById(R.id.imageButtonAdd);
         petimage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent(AnamenuActivity.this, PetInfoActivity.class);
+                Intent intentLoadNewActivity = new Intent(MenuActivity.this, PetInfoActivity.class);
                 startActivity(intentLoadNewActivity);
             }
         });
@@ -70,7 +68,7 @@ public class AnamenuActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.anamenu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -96,17 +94,20 @@ public class AnamenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent intentLoadNewActivity = new Intent(MenuActivity.this, AllVaccineActivity.class);
+            startActivity(intentLoadNewActivity);
+            // Handle the allvaccine
         } else if (id == R.id.nav_gallery) {
+            Intent intentLoadNewActivity = new Intent(MenuActivity.this, AllThreatmentActivity.class);
+            startActivity(intentLoadNewActivity);
 
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+            Intent intentLoadNewActivity = new Intent(MenuActivity.this, AllAppointmentActivity.class);
+            startActivity(intentLoadNewActivity);
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            Intent intentLoadNewActivity = new Intent(MenuActivity.this, AskActivity.class);
+            startActivity(intentLoadNewActivity);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
