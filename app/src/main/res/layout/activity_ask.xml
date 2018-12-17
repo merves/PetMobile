@@ -84,7 +84,7 @@
         android:id="@+id/imageButton7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
+        app:srcCompat="@android:drawable/ic_input_get"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="257dp"
         android:layout_marginStart="24dp"
