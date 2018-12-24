@@ -19,10 +19,8 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
 
     private EditText Name;
     private EditText Password;
-    private TextView Info;
     private Button Login;
     private Button Register;
-    private int counter = 5;
     private CheckBox rem_userpass;
 
     SharedPreferences sharedPreferences;
@@ -39,6 +37,7 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
 
             sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
+
             Name = (EditText)findViewById(R.id.etName);
             Password = (EditText)findViewById(R.id.etPassword);
             rem_userpass = (CheckBox)findViewById(R.id.rememberme);
@@ -58,11 +57,9 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
 
            // Name = (EditText)findViewById(R.id.etName);
            // Password = (EditText)findViewById(R.id.etPassword);
-            Info = (TextView)findViewById(R.id.tvInfo);
             Login = (Button)findViewById(R.id.btnLogin);
             Register = (Button) findViewById(R.id.btnregister) ;
 
-            Info.setText("No of attempts remaining: 5");
 
             Login.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,13 +81,9 @@ public class SignActivity extends AppCompatActivity implements TextWatcher, Comp
             Intent intent = new Intent(SignActivity.this, MenuActivity.class);
             startActivity(intent);
         }else{
-            counter--;
 
-            Info.setText("No of attempts remaining: " + String.valueOf(counter));
-
-            if(counter == 0){
                 Login.setEnabled(false);
-            }
+
         }
     }
 

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,12 +15,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+
+import static android.R.drawable.ic_input_add;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageButton petimage_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +39,9 @@ public class MenuActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Ask veterinary", Snackbar.LENGTH_LONG)
+                Intent intentLoadNewActivity = new Intent(MenuActivity.this, AskActivity.class);
+                startActivity(intentLoadNewActivity);
+                Snackbar.make(view, "Veterinere Sor", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -44,14 +55,35 @@ public class MenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        petimage_btn = (ImageButton) findViewById(R.id.imageButtonAdd);
-        petimage_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        //------add new button-----////
+        final LinearLayout dynamicview = (LinearLayout)findViewById(R.id.buttonlayout);
+        final LinearLayout.LayoutParams lprams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        final ImageButton btn = new ImageButton(this);
+        int icon = R.drawable.paw;
+        btn.setImageDrawable(
+                    ContextCompat.getDrawable(getApplicationContext(), icon));
+        btn.setLayoutParams(lprams);
+        btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Intent intentLoadNewActivity = new Intent(MenuActivity.this, PetInfoActivity.class);
                 startActivity(intentLoadNewActivity);
             }
         });
+
+        petimage_btn = (ImageButton) findViewById(R.id.impetAdd);
+
+        petimage_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dynamicview.addView(btn);
+
+            }
+        });
+        //------add new button-----////
 
     }
 

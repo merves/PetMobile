@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Hanuman</string>
     <string name="tw_splash">Hanuman</string>
     <string name="title_activity_main">MainActivity</string>

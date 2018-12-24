@@ -2,24 +2,27 @@ package com.example.trk.petmobile;
 
         import android.app.Activity;
         import android.app.AlertDialog;
+        import android.content.Context;
         import android.content.DialogInterface;
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.database.Cursor;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
         import android.net.Uri;
         import android.os.Bundle;
         import android.provider.MediaStore;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.design.widget.Snackbar;
+        import android.util.Base64;
         import android.view.View;
         import android.view.View.OnClickListener;
         import android.widget.Button;
         import android.widget.ImageView;
 
+        import java.io.ByteArrayOutputStream;
+
 public class PetInfoActivity extends Activity implements OnClickListener {
-
-    //   private static final int IMAGE_PICK = 1;
-    //   private static final int IMAGE_CAPTURE = 2;
-
     ImageView imageView;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
 
@@ -35,15 +38,16 @@ public class PetInfoActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_info);
 
+        SharedPreferences preferences = getSharedPreferences("myprefs",MODE_PRIVATE);
+
         imageView = (ImageView) findViewById(R.id.imageToUpload);
+
         buttonNewPic = (Button) findViewById(R.id.btnUploadImage);
-        // this.buttonImage = (Button) this.findViewById(R.id.btnUpCamera);
         btngitAsi = (Button) findViewById(R.id.btnAsi);
         btngitHastalik = (Button) findViewById(R.id.btnHastalik);
         btngitTedavi = (Button) findViewById(R.id.btnTedavi);
         btngitRandevu = (Button) findViewById(R.id.btnRandevu);
 
-        // this.buttonImage.setOnClickListener(new ImagePickListener());
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +64,25 @@ public class PetInfoActivity extends Activity implements OnClickListener {
         btngitHastalik.setOnClickListener(this);
         btngitTedavi.setOnClickListener(this);
         btngitRandevu.setOnClickListener(this);
+
+        String img_str=preferences.getString("userphoto", "");
+        if (!img_str.equals("")){
+            //decode string to image
+            String base=img_str;
+            byte[] imageAsBytes = Base64.decode(base.getBytes(), Base64.DEFAULT);
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
+        }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentLoadNewActivity = new Intent(PetInfoActivity.this, AskActivity.class);
+                startActivity(intentLoadNewActivity);
+                Snackbar.make(view, "Veterinere Sor", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
     }
     @Override
@@ -122,205 +145,29 @@ public class PetInfoActivity extends Activity implements OnClickListener {
         }
     }
 
-
-}
-
-/*    class ImagePickListener implements OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            startActivityForResult(Intent.createChooser(intent, "Bir Fotoðraf Seçin"), IMAGE_PICK);
-        }
-    }
-
-    class TakePictureListener implements OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(cameraIntent, IMAGE_CAPTURE);
-        }
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case IMAGE_PICK:
-                    this.imageFromGallery(resultCode, data);
-                    break;
-                case IMAGE_CAPTURE:
-                    this.imageFromCamera(resultCode, data);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
-    private void imageFromCamera(int resultCode, Intent data) {
-        String[] projection = {
-                MediaStore.Images.Thumbnails._ID, // The columns we want
-                MediaStore.Images.Thumbnails.IMAGE_ID,
-                MediaStore.Images.Thumbnails.KIND,
-                MediaStore.Images.Thumbnails.DATA};
-        String selection = MediaStore.Images.Thumbnails.KIND + "=" + // Select only mini's
-                MediaStore.Images.Thumbnails.MINI_KIND;
-
-        String sort = MediaStore.Images.Thumbnails._ID + " DESC";
-
-        Cursor myCursor = this.managedQuery(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, projection, selection, null, sort);
-
-        long imageId = 0l;
-
-        try{
-            myCursor.moveToFirst();
-            imageId = myCursor.getLong(myCursor.getColumnIndexOrThrow(MediaStore.Images.Thumbnails.IMAGE_ID));
-        }
-        finally{myCursor.close();}
-
-        String[] largeFileProjection = {
-                MediaStore.Images.ImageColumns._ID,
-                MediaStore.Images.ImageColumns.DATA
-        };
-
-        String largeFileSort = MediaStore.Images.ImageColumns._ID + " DESC";
-        myCursor = this.managedQuery(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, largeFileProjection, null, null, largeFileSort);
-        try{
-            myCursor.moveToFirst();
-        }
-        finally{myCursor.close();}
-        Uri uriLargeImage = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, String.valueOf(imageId));
-//Uri uriThumbnailImage = Uri.withAppendedPath(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, String.valueOf(thumbnailImageId));
-        imageView.setImageURI(uriLargeImage);
-    }
-
-    private void imageFromGallery(int resultCode, Intent data) {
-        Uri selectedImage = data.getData();
-        String [] filePathColumn = {MediaStore.Images.Media.DATA};
-
-        Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-        cursor.moveToFirst();
-
-        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-        String filePath = cursor.getString(columnIndex);
-        this.imageView.setImageBitmap(BitmapFactory.decodeFile(filePath));
-        cursor.close();
-
-    }
-
-}*/
-
-/*
-import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-
-import static com.example.trk.petmobile.R.id.btnAsi;
-import static com.example.trk.petmobile.R.id.imageToUpload;
-
-public class PetInfoActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final int IMAGE_PICK = 1;
-    private static final int IMAGE_CAPTURE = 2;
-    private static final int RESULT_LOAD_IMAGE =1;
-    ImageView imLoadpet;
-    EditText etLoadpet;
-    Button btnLoadpet;
-    Button btngitAsi;
-    Button btngitHastalik;
-    Button btngitTedavi;
-    Button btngitRandevu;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pet_info);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Ask veterinary", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        imLoadpet=(ImageView)findViewById(imageToUpload);
-        etLoadpet = (EditText) findViewById(R.id.etUploadName);
-        btnLoadpet = (Button) findViewById(R.id.btnUploadImage);
-        btngitAsi = (Button) findViewById(R.id.btnAsi);
-        btngitHastalik = (Button) findViewById(R.id.btnHastalik);
-        btngitTedavi = (Button) findViewById(R.id.btnTedavi);
-        btngitRandevu = (Button) findViewById(R.id.btnRandevu);
-
-
-        imLoadpet.setOnClickListener(this);
-        btnLoadpet.setOnClickListener(this);
-        btngitAsi.setOnClickListener(this);
-        btngitHastalik.setOnClickListener(this);
-        btngitTedavi.setOnClickListener(this);
-        btngitRandevu.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case imageToUpload:
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE );
-                break;
-            case R.id.btnUploadImage:
-                Intent galleryIntent2 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent2, RESULT_LOAD_IMAGE );
-                break;
-            case R.id.btnAsi:
-                Intent intentLoadasi = new Intent(PetInfoActivity.this, VaccineActvity.class);
-                startActivity(intentLoadasi);
-                break;
-            case R.id.btnHastalik:
-                Intent intentLoadhastalik = new Intent(PetInfoActivity.this, ThreatmentActivity.class);
-                startActivity(intentLoadhastalik);
-                break;
-            case R.id.btnTedavi:
-                Intent intentLoadtedavi = new Intent(PetInfoActivity.this, ThreatmentActivity.class);
-                startActivity(intentLoadtedavi);
-                break;
-            case R.id.btnRandevu:
-                Intent intentLoadrandevu = new Intent(PetInfoActivity.this, AppointmentActivity.class);
-                startActivity(intentLoadrandevu);
-                break;
-
-        }
-    }
-
-
-    class ImagePickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            startActivityForResult(Intent.createChooser(intent, "Bir Fotoðraf Seçin"), IMAGE_PICK);
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if((requestCode != RESULT_LOAD_IMAGE )&&( resultCode != RESULT_OK )&& (data != null)){
-            Uri selectedImage= data.getData();
-            ImageView imageToUpload = (ImageView)findViewById(R.id.imageToUpload);
-            imageToUpload.setImageURI(selectedImage);
-        }
+    public void setProfileImage(View view){
+        ImageView ivphoto = (ImageView)findViewById(R.id.imageToUpload);
+        //code image to string
+        ivphoto.buildDrawingCache();
+        Bitmap bitmap = ivphoto.getDrawingCache();
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] image=stream.toByteArray();
+        //System.out.println("byte array:"+image);
+        //final String img_str = "data:image/png;base64,"+ Base64.encodeToString(image, 0);
+        //System.out.println("string:"+img_str);
+        String img_str = Base64.encodeToString(image, 0);
+        //decode string to image
+        String base=img_str;
+        byte[] imageAsBytes = Base64.decode(base.getBytes(), Base64.DEFAULT);
+        ImageView ivsavedphoto = (ImageView)this.findViewById(R.id.imageToUpload);
+        ivsavedphoto.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes,0, imageAsBytes.length) );
+        //save in sharedpreferences
+        SharedPreferences preferences = getSharedPreferences("myprefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("userphoto",img_str);
+        editor.commit();
     }
 
 }
-*/
+
